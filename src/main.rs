@@ -265,21 +265,16 @@ fn get_polygon_3() -> Vec<Point> {
 }
 
 fn get_polygon_4() -> Vec<Point> {
-    // Polígono complejo reorganizado para mejor estructura - sentido horario
+    // Rectángulo verde más pequeño y bien definido
     vec![
-        Point::new(413, 177), Point::new(466, 180), Point::new(517, 144), 
-        Point::new(552, 214), Point::new(597, 215), Point::new(580, 230), 
-        Point::new(632, 230), Point::new(615, 214), Point::new(659, 214), 
-        Point::new(672, 192), Point::new(761, 179), Point::new(750, 145), 
-        Point::new(660, 52), Point::new(676, 37), Point::new(535, 36), 
-        Point::new(553, 53), Point::new(502, 88), Point::new(448, 159)
+        Point::new(500, 180), Point::new(650, 180), Point::new(650, 280), Point::new(500, 280)
     ]
 }
 
 fn get_polygon_5() -> Vec<Point> {
-    // Agujero rectangular - ordenado en sentido horario
+    // Agujero rectangular más pequeño y centrado
     vec![
-        Point::new(682, 175), Point::new(739, 170), Point::new(735, 148), Point::new(708, 120)
+        Point::new(550, 210), Point::new(600, 210), Point::new(600, 250), Point::new(550, 250)
     ]
 }
 

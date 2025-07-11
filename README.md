@@ -9,8 +9,8 @@ El proyecto dibuja y rellena múltiples polígonos con diferentes formas y color
 - **Polígono 1**: Forma compleja irregular de 10 vértices - Amarillo con borde blanco
 - **Polígono 2**: Cuadrilátero ordenado en sentido horario - Azul con borde blanco  
 - **Polígono 3**: Triángulo equilátero - Rojo con borde blanco
-- **Polígono 4**: Polígono complejo de 18 vértices con agujero interno - Verde con borde blanco
-- **Polígono 5**: Agujero cuadrangular dentro del Polígono 4 - No se rellena (solo borde)
+- **Polígono 4**: Rectángulo verde con agujero rectangular interno - Verde con borde blanco
+- **Polígono 5**: Agujero rectangular dentro del Polígono 4 - No se rellena (permanece negro como el fondo)
 
 ## Requisitos
 
@@ -65,13 +65,13 @@ El proyecto utiliza el algoritmo de scanline para el relleno de polígonos:
 **Estructura:** Triángulo ordenado en sentido horario
 **Coordenadas:** (377, 249), (436, 249), (411, 197)
 
-### Polígono 4 (Polígono Complejo - 18 vértices)
-**Estructura:** Polígono complejo reorganizado para mejor visualización
-**Coordenadas:** (413, 177), (466, 180), (517, 144), (552, 214), (597, 215), (580, 230), (632, 230), (615, 214), (659, 214), (672, 192), (761, 179), (750, 145), (660, 52), (676, 37), (535, 36), (553, 53), (502, 88), (448, 159)
+### Polígono 4 (Rectángulo con agujero - 4 vértices)
+**Estructura:** Rectángulo verde con agujero rectangular interno
+**Coordenadas:** (500, 180), (650, 180), (650, 280), (500, 280)
 
 ### Polígono 5 (Agujero - 4 vértices)
-**Estructura:** Cuadrilátero que forma un agujero dentro del Polígono 4
-**Coordenadas:** (682, 175), (739, 170), (735, 148), (708, 120)
+**Estructura:** Rectángulo que forma un agujero dentro del Polígono 4
+**Coordenadas:** (550, 210), (600, 210), (600, 250), (550, 250)
 
 ## Colores
 
