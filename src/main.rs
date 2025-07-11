@@ -286,8 +286,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Fill background with black
     filler.fill_background(Color::black());
     
-    // Draw only Polygon 2 - Blue with white border
+    // Draw all polygons
+    // Polygon 1 - Yellow with white border
+    filler.fill_polygon(&get_polygon_1(), Color::yellow(), Color::white());
+    
+    // Polygon 2 - Blue with white border
     filler.fill_polygon(&get_polygon_2(), Color::blue(), Color::white());
+    
+    // Polygon 3 - Red with white border
+    filler.fill_polygon(&get_polygon_3(), Color::red(), Color::white());
+    
+    // Polygon 4 with hole (Polygon 5) - Green with white border
+    filler.fill_polygon_with_hole(&get_polygon_4(), &get_polygon_5(), Color::green(), Color::white());
     
     // Save the image
     filler.save("out.bmp")?;
