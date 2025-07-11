@@ -1,29 +1,29 @@
 <!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
 
-# Polygon Filling Project Instructions
+Instrucciones del proyecto de relleno de polígonos
 
-This is a Rust project that implements polygon filling algorithms using scanline techniques.
+Este proyecto de Rust implementa algoritmos de relleno de polígonos mediante técnicas de líneas de escaneo.
 
-## Project Goals
-- Implement polygon filling for complex polygons with multiple vertices
-- Handle polygons with holes (exclusion areas)
-- Generate BMP images with filled polygons
-- Support different colors for fill and border
+Objetivos del proyecto
+- Implementar el relleno de polígonos complejos con múltiples vértices
+- Gestionar polígonos con agujeros (áreas de exclusión)
+- Generar imágenes BMP con polígonos rellenos
+- Admitir diferentes colores para relleno y borde
 
-## Key Components
-- Point structure for 2D coordinates
-- Color structure for RGB values
-- PolygonFiller struct with scanline algorithm implementation
-- Support for polygon-with-hole rendering
+Componentes clave
+- Estructura de puntos para coordenadas 2D
+- Estructura de color para valores RGB
+- Estructura PolygonFiller con implementación del algoritmo de líneas de escaneo
+- Soporte para renderizado de polígonos con agujeros
 
-## Usage Patterns
-- Use the scanline algorithm for efficient polygon filling
-- Handle edge cases for polygon intersections
-- Maintain proper color management for borders and fills
-- Generate output in BMP format for compatibility
+Patrones de uso
+- Usar el algoritmo de líneas de escaneo para un relleno de polígonos eficiente
+- Gestionar casos extremos en intersecciones de polígonos
+- Mantener una gestión de color adecuada para bordes y rellenos
+- Generar la salida en formato BMP para compatibilidad
 
-## Code Style
-- Use clear, descriptive variable names
-- Implement proper error handling
-- Follow Rust conventions and best practices
-- Keep functions focused and modular
+Estilo del código
+- Usar nombres de variable claros y descriptivos
+- Implementar un manejo adecuado de errores
+- Seguir las convenciones y mejores prácticas de Rust
+- Mantener las funciones enfocadas y modulares
