@@ -300,7 +300,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Guardar la imagen
     filler.save("out.bmp")?;
     
-    println!("Imagen guardada como out.bmp");
+    println!("Imagen guardada como out.bmp - Todos los poligonos");
     
     Ok(())
 }
