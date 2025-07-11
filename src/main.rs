@@ -106,15 +106,15 @@ impl PolygonFiller {
             return;
         }
         
-        // Find bounding box
+        // Encontrar caja delimitadora
         let min_y = vertices.iter().map(|p| p.y).min().unwrap();
         let max_y = vertices.iter().map(|p| p.y).max().unwrap();
         
-        // Fill polygon using scanline algorithm
+        // Rellenar polígono usando algoritmo scanline
         for y in min_y..=max_y {
             let mut intersections = Vec::new();
             
-            // Find intersections with polygon edges
+            // Encontrar intersecciones con bordes del polígono
             for i in 0..vertices.len() {
                 let p1 = vertices[i];
                 let p2 = vertices[(i + 1) % vertices.len()];
@@ -125,10 +125,10 @@ impl PolygonFiller {
                 }
             }
             
-            // Sort intersections
+            // Ordenar intersecciones
             intersections.sort();
             
-            // Fill between pairs of intersections
+            // Rellenar entre pares de intersecciones
             for chunk in intersections.chunks(2) {
                 if chunk.len() == 2 {
                     let x1 = chunk[0];
@@ -143,7 +143,7 @@ impl PolygonFiller {
             }
         }
         
-        // Draw border
+        // Dibujar borde
         for i in 0..vertices.len() {
             let p1 = vertices[i];
             let p2 = vertices[(i + 1) % vertices.len()];
@@ -281,26 +281,26 @@ fn get_polygon_5() -> Vec<Point> {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut filler = PolygonFiller::new(800, 450);
     
-    // Fill background with black
+    // Rellenar fondo con negro
     filler.fill_background(Color::black());
     
-    // Draw all polygons
-    // Polygon 1 - Yellow with white border
+    // Dibujar todos los polígonos
+    // Polígono 1 - Amarillo con borde blanco
     filler.fill_polygon(&get_polygon_1(), Color::yellow(), Color::white());
     
-    // Polygon 2 - Blue with white border
+    // Polígono 2 - Azul con borde blanco
     filler.fill_polygon(&get_polygon_2(), Color::blue(), Color::white());
     
-    // Polygon 3 - Red with white border
+    // Polígono 3 - Rojo con borde blanco
     filler.fill_polygon(&get_polygon_3(), Color::red(), Color::white());
     
-    // Polygon 4 with hole (Polygon 5) - Green with white border
+    // Polígono 4 con agujero (Polígono 5) - Verde con borde blanco
     filler.fill_polygon_with_hole(&get_polygon_4(), &get_polygon_5(), Color::green(), Color::white());
     
-    // Save the image
+    // Guardar la imagen
     filler.save("out.bmp")?;
     
-    println!("Image saved as out.bmp");
+    println!("Imagen guardada como out.bmp");
     
     Ok(())
 }
