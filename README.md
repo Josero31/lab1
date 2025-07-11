@@ -7,7 +7,7 @@ Este proyecto implementa un algoritmo de relleno de polígonos usando la técnic
 El proyecto dibuja y rellena múltiples polígonos con diferentes formas y colores:
 
 - **Polígono 1**: Forma compleja de 10 puntos - Amarillo con borde blanco
-- **Polígono 2**: Cuadrilátero - Cian con borde blanco  
+- **Polígono 2**: Cuadrilátero - Azul con borde blanco  
 - **Polígono 3**: Triángulo - Rojo con borde blanco
 - **Polígono 4**: Polígono complejo con agujero (Polígono 5) - Verde con borde blanco
 - **Polígono 5**: Agujero dentro del Polígono 4 - No se rellena
@@ -31,7 +31,6 @@ El programa generará un archivo `out.bmp` con todos los polígonos renderizados
 - `src/main.rs`: Implementación principal del algoritmo
 - `out.bmp`: Imagen de salida generada (requerido por el laboratorio)
 - `Cargo.toml`: Configuración del proyecto y dependencias
-- `.github/copilot-instructions.md`: Instrucciones para GitHub Copilot
 
 ## Algoritmo
 
@@ -46,6 +45,7 @@ El proyecto utiliza el algoritmo de scanline para el relleno de polígonos:
 
 - `main`: Contiene todos los polígonos renderizados (solo merges de otras branches)
 - `Polygon-1`: Solo el polígono 1 (amarillo con borde blanco)
+- `Polygon-2`: Solo el polígono 2 (azul con borde blanco)
 - `Polygon-3`: Solo el polígono 3 (rojo con borde blanco)  
 - `Polygon-4`: Polígono 4 con agujero (verde con borde blanco)
 
@@ -72,7 +72,24 @@ El proyecto utiliza el algoritmo de scanline para el relleno de polígonos:
 
 - **Fondo**: Negro
 - **Polígono 1**: Amarillo (#FFFF00)
-- **Polígono 2**: Cian (#00FFFF)
+- **Polígono 2**: Azul (#0000FF)
 - **Polígono 3**: Rojo (#FF0000)
 - **Polígono 4**: Verde (#00FF00)
 - **Todos los bordes**: Blanco (#FFFFFF)
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut filler = PolygonFiller::new(800, 450);
+    
+    // Fill background with black
+    filler.fill_background(Color::black());
+    
+    // Draw only Polygon 2 - Blue with white border
+    filler.fill_polygon(&get_polygon_2(), Color::blue(), Color::white());
+    
+    // Save the image
+    filler.save("out.bmp")?;
+    
+    println!("Image saved as out.bmp");
+    
+    Ok(())
+}
