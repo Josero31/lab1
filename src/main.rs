@@ -47,10 +47,6 @@ impl Color {
     fn blue() -> Self {
         Color::new(0, 0, 255)
     }
-    
-    fn cyan() -> Self {
-        Color::new(0, 255, 255)
-    }
 }
 
 struct PolygonFiller {
