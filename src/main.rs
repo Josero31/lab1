@@ -283,16 +283,16 @@ fn get_polygon_5() -> Vec<Point> {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut filler = PolygonFiller::new(800, 450);
     
-    // Fill background with black
+    // Rellenar fondo con negro
     filler.fill_background(Color::black());
     
-    // Draw only Polygon 4 with hole (Polygon 5) - Green with white border
+    // Dibujar solo Polígono 4 con agujero (Polígono 5) - Verde con borde blanco
     filler.fill_polygon_with_hole(&get_polygon_4(), &get_polygon_5(), Color::green(), Color::white());
     
-    // Save the image
+    // Guardar la imagen
     filler.save("out.bmp")?;
     
-    println!("Image saved as out.bmp");
+    println!("Imagen guardada como out.bmp - Solo Poligono 4 con agujero");
     
     Ok(())
 }
