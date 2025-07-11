@@ -29,8 +29,9 @@ El programa generará un archivo `out.bmp` con todos los polígonos renderizados
 ## Estructura del Proyecto
 
 - `src/main.rs`: Implementación principal del algoritmo
-- `out.bmp`: Imagen de salida generada
+- `out.bmp`: Imagen de salida generada (requerido por el laboratorio)
 - `Cargo.toml`: Configuración del proyecto y dependencias
+- `.github/copilot-instructions.md`: Instrucciones para GitHub Copilot
 
 ## Algoritmo
 
@@ -39,14 +40,33 @@ El proyecto utiliza el algoritmo de scanline para el relleno de polígonos:
 1. **Detección de intersecciones**: Para cada línea horizontal (scanline), encuentra las intersecciones con los bordes del polígono
 2. **Ordenamiento**: Ordena las intersecciones de izquierda a derecha
 3. **Relleno**: Rellena entre pares de intersecciones
-4. **Manejo de agujeros**: Para polígonos con agujeros, excluye las áreas internas
+4. **Manejo de agujeros**: Para polígonos con agujeros, excluye las áreas internas detectando intersecciones con el polígono del agujero
 
 ## Branches Específicas
 
-- `main`: Contiene todos los polígonos renderizados
+- `main`: Contiene todos los polígonos renderizados (solo merges de otras branches)
 - `Polygon-1`: Solo el polígono 1 (amarillo con borde blanco)
 - `Polygon-3`: Solo el polígono 3 (rojo con borde blanco)  
 - `Polygon-4`: Polígono 4 con agujero (verde con borde blanco)
+
+**Nota**: La branch `main` contiene únicamente commits de merge de las otras branches, como se requiere en las especificaciones.
+
+## Coordenadas de los Polígonos
+
+### Polígono 1 (Complejo - 10 puntos)
+(165, 380), (185, 360), (180, 330), (207, 345), (233, 330), (230, 360), (250, 380), (220, 385), (205, 410), (193, 383)
+
+### Polígono 2 (Cuadrilátero)  
+(321, 335), (288, 286), (339, 251), (374, 302)
+
+### Polígono 3 (Triángulo)
+(377, 249), (411, 197), (436, 249)
+
+### Polígono 4 (Complejo con agujero)
+(413, 177), (448, 159), (502, 88), (553, 53), (535, 36), (676, 37), (660, 52), (750, 145), (761, 179), (672, 192), (659, 214), (615, 214), (632, 230), (580, 230), (597, 215), (552, 214), (517, 144), (466, 180)
+
+### Polígono 5 (Agujero dentro del Polígono 4)
+(682, 175), (708, 120), (735, 148), (739, 170)
 
 ## Colores
 
