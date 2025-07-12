@@ -288,23 +288,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Rellenar fondo con negro
     filler.fill_background(Color::black());
     
-    // Dibujar todos los polígonos
-    // Polígono 1 - Amarillo con borde blanco
+    // Dibujar solo Polígono 1 - Amarillo con borde blanco
     filler.fill_polygon(&get_polygon_1(), Color::yellow(), Color::white());
-    
-    // Polígono 2 - Azul con borde blanco
-    filler.fill_polygon(&get_polygon_2(), Color::blue(), Color::white());
-    
-    // Polígono 3 - Rojo con borde blanco
-    filler.fill_polygon(&get_polygon_3(), Color::red(), Color::white());
-    
-    // Polígono 4 con agujero (Polígono 5) - Verde con borde blanco
-    filler.fill_polygon_with_hole(&get_polygon_4(), &get_polygon_5(), Color::green(), Color::white());
     
     // Guardar la imagen
     filler.save("out.bmp")?;
     
-    println!("Imagen guardada como out.bmp - Todos los poligonos");
+    println!("Imagen guardada como out.bmp - Solo Poligono 1");
     
     Ok(())
 }
