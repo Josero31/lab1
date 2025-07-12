@@ -47,10 +47,6 @@ impl Color {
     fn blue() -> Self {
         Color::new(0, 0, 255)
     }
-    
-    fn cyan() -> Self {
-        Color::new(0, 255, 255)
-    }
 }
 
 struct PolygonFiller {
@@ -110,15 +106,15 @@ impl PolygonFiller {
             return;
         }
         
-        // Find bounding box
+        // Encontrar caja delimitadora
         let min_y = vertices.iter().map(|p| p.y).min().unwrap();
         let max_y = vertices.iter().map(|p| p.y).max().unwrap();
         
-        // Fill polygon using scanline algorithm
+        // Rellenar polígono usando algoritmo scanline
         for y in min_y..=max_y {
             let mut intersections = Vec::new();
             
-            // Find intersections with polygon edges
+            // Encontrar intersecciones con bordes del polígono
             for i in 0..vertices.len() {
                 let p1 = vertices[i];
                 let p2 = vertices[(i + 1) % vertices.len()];
@@ -129,10 +125,10 @@ impl PolygonFiller {
                 }
             }
             
-            // Sort intersections
+            // Ordenar intersecciones
             intersections.sort();
             
-            // Fill between pairs of intersections
+            // Rellenar entre pares de intersecciones
             for chunk in intersections.chunks(2) {
                 if chunk.len() == 2 {
                     let x1 = chunk[0];
@@ -147,7 +143,7 @@ impl PolygonFiller {
             }
         }
         
-        // Draw border
+        // Dibujar borde
         for i in 0..vertices.len() {
             let p1 = vertices[i];
             let p2 = vertices[(i + 1) % vertices.len()];
@@ -245,26 +241,31 @@ impl PolygonFiller {
 }
 
 fn get_polygon_1() -> Vec<Point> {
+    // Polígono complejo de 10 puntos - forma irregular pero bien estructurada
     vec![
-        Point::new(165, 380), Point::new(185, 360), Point::new(180, 330), Point::new(207, 345),
-        Point::new(233, 330), Point::new(230, 360), Point::new(250, 380), Point::new(220, 385),
-        Point::new(205, 410), Point::new(193, 383)
+        Point::new(165, 380), Point::new(185, 360), Point::new(180, 330), 
+        Point::new(207, 345), Point::new(233, 330), Point::new(230, 360), 
+        Point::new(250, 380), Point::new(220, 385), Point::new(205, 410), 
+        Point::new(193, 383)
     ]
 }
 
 fn get_polygon_2() -> Vec<Point> {
+    // Cuadrilátero simple - ordenado en sentido horario
     vec![
         Point::new(321, 335), Point::new(288, 286), Point::new(339, 251), Point::new(374, 302)
     ]
 }
 
 fn get_polygon_3() -> Vec<Point> {
+    // Triángulo simple - ordenado en sentido horario
     vec![
         Point::new(377, 249), Point::new(411, 197), Point::new(436, 249)
     ]
 }
 
 fn get_polygon_4() -> Vec<Point> {
+    // Polígono complejo con agujero - forma irregular con múltiples vértices
     vec![
         Point::new(413, 177), Point::new(448, 159), Point::new(502, 88), Point::new(553, 53),
         Point::new(535, 36), Point::new(676, 37), Point::new(660, 52), Point::new(750, 145),
@@ -275,6 +276,7 @@ fn get_polygon_4() -> Vec<Point> {
 }
 
 fn get_polygon_5() -> Vec<Point> {
+    // Agujero dentro del polígono 4 - no debe ser pintado
     vec![
         Point::new(682, 175), Point::new(708, 120), Point::new(735, 148), Point::new(739, 170)
     ]
@@ -286,13 +288,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Rellenar fondo con negro
     filler.fill_background(Color::black());
     
-    // Dibujar solo Polígono 1 - Amarillo con borde blanco
+    // Dibujar todos los polígonos
+    // Polígono 1 - Amarillo con borde blanco
     filler.fill_polygon(&get_polygon_1(), Color::yellow(), Color::white());
+    
+    // Polígono 2 - Azul con borde blanco
+    filler.fill_polygon(&get_polygon_2(), Color::blue(), Color::white());
+    
+    // Polígono 3 - Rojo con borde blanco
+    filler.fill_polygon(&get_polygon_3(), Color::red(), Color::white());
+    
+    // Polígono 4 con agujero (Polígono 5) - Verde con borde blanco
+    filler.fill_polygon_with_hole(&get_polygon_4(), &get_polygon_5(), Color::green(), Color::white());
     
     // Guardar la imagen
     filler.save("out.bmp")?;
     
-    println!("Imagen guardada como out.bmp - Solo Poligono 1");
+    println!("Imagen guardada como out.bmp - Todos los poligonos");
     
     Ok(())
 }
